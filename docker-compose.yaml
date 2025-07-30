@@ -18,9 +18,19 @@ services:
       - backend
 
   backend:
-    build: ./backend
+    image: node
+    working_dir: /app
+    volumes:
+      - ./backend:/app
     ports:
       - "3000:3000"
+    entrypoint:
+      - /bin/bash
+      - -c
+    command:
+      - npm install && npm run start:dev
+    stdin_open: true
+    tty: true
     depends_on:
       - db
 
