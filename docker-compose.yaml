@@ -1,5 +1,6 @@
 services:
   frontend:
+    container_name: frontend
     image: node:lts
     working_dir: /app
     volumes:
@@ -18,6 +19,7 @@ services:
       - backend
 
   backend:
+    container_name: backend
     image: node
     working_dir: /app
     volumes:
@@ -35,6 +37,7 @@ services:
       - db
 
   db:
+    container_name: db
     image: postgres
     ports:
       - "5432:5432"
