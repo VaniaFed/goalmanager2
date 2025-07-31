@@ -26,11 +26,12 @@ services:
       - ./backend:/app
     ports:
       - "3000:3000"
+      - "5555:5555"
     entrypoint:
       - /bin/bash
       - -c
     command:
-      - npm install && npm run start:dev
+      - npm install && npm run prisma:dev:migrate && npm run prisma:generate && npm run start:dev
     stdin_open: true
     tty: true
     depends_on:
