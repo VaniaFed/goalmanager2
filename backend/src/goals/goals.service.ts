@@ -15,6 +15,9 @@ export class GoalsService {
   findOne(id: number) {
     return this.prismaService.goal.findUnique({
       where: { id: Number(id) },
+      include: {
+        tasks: true,
+      },
     });
   }
 }
